@@ -1,12 +1,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-   // private let times = [
+    // private let times = [
     //"Spurs",
     //"Man United",
     //"Man City",
     //"Arsenal"
-   // ]
+    // ]
     
     private let times:[Fut] = [
         .init(title:"Spurs", releaseDate:"Premiere League", imageURL:""),
@@ -58,12 +58,12 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         NSLayoutConstraint.activate([
-                 tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-                 tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                 tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                 tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-             ])
-         }
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 }
 
 extension  ViewController: UITableViewDataSource {
@@ -77,13 +77,12 @@ extension  ViewController: UITableViewDataSource {
         cell.setup(fut: fut)
         return cell
     }
-    
+}
+
 extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath:IndexPath){
         let storyboard  = UIStoryboard(name: "Detail", bundle:Bundle(for: DetailViewController.self))
         let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
         navigationController?.pushViewController(detailViewController, animated: true)
-        }
     }
 }
-
