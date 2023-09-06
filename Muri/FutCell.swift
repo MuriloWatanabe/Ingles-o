@@ -22,6 +22,7 @@ class FutCell: UITableViewCell{
             stack.translatesAutoresizingMaskIntoConstraints = false
             stack.axis = .vertical
             stack.spacing = 8
+            stack.distribution = .equalCentering
             return stack
         }()
     
@@ -58,8 +59,10 @@ class FutCell: UITableViewCell{
         contentView.addSubview(horizontalStack)
         horizontalStack.addArrangedSubview(futImageView)
         horizontalStack.addArrangedSubview(verticalStack)
+        verticalStack.addArrangedSubview(UIView())
         verticalStack.addArrangedSubview(titleLabel)
         verticalStack.addArrangedSubview(releaseDateLabel)
+        verticalStack.addArrangedSubview(UIView())
     }
     
     private func setupConstraints(){
@@ -78,7 +81,8 @@ class FutCell: UITableViewCell{
     
     private func setupView(){
         selectionStyle = .none
-        
+        layoutMargins = .zero
+        separatorInset = .zero
         
         NSLayoutConstraint.activate([
             futImageView.widthAnchor.constraint(equalToConstant: 90),

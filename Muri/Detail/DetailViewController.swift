@@ -2,10 +2,12 @@ import UIKit
 
 class DetailViewController: UIViewController{
     
-    @IBOutlet weak var futDescription: UILabel!
-    @IBOutlet weak var futL: UILabel!
     @IBOutlet weak var futImageView: UIImageView!
     @IBOutlet weak var futTitle: UILabel!
+    @IBOutlet weak var futL: UILabel!
+    @IBOutlet weak var futDescription: UILabel!
+    
+    var fut: Fut!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,6 +16,8 @@ class DetailViewController: UIViewController{
         futImageView.layer.masksToBounds = true
         futImageView.contentMode = .scaleAspectFill
         futImageView.backgroundColor = .blue
+        
+        futTitle.text = fut.title
     }
 }
 

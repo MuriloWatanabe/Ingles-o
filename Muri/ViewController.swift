@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
+        table.separatorColor = .clear
         return table
     }()
     
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         tableView.dataSource = self
+        tableView.delegate = self
         addViewsInHierarchy()
         setupConstraints()
     }
@@ -81,8 +83,10 @@ extension  ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath:IndexPath){
+        let fut = times[indexPath.row]
         let storyboard  = UIStoryboard(name: "Detail", bundle:Bundle(for: DetailViewController.self))
-        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
+        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! DetailViewController
+        detailViewController.fut = fut
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
